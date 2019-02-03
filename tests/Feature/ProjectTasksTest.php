@@ -1,4 +1,4 @@
-<?php
+ <?php
 namespace Tests\Feature;
 use App\Project;
 use Facades\Tests\Setup\ProjectFactory;
