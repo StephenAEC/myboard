@@ -21,8 +21,7 @@ Route::group(['middleware'=>'auth'], function(){
 | Project routes Routes
 |--------------------------------------------------------------------------
 */
-
-    Route::get('/projects', 'ProjectsController@index');
+Route::get('/projects', 'ProjectsController@index');
     Route::get('/projects/create', 'ProjectsController@create');
     Route::get('/projects/{project}', 'ProjectsController@show');
     Route::get('/projects/{project}/edit', 'ProjectsController@edit');
@@ -30,7 +29,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/projects', 'ProjectsController@store');
     Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
     Route::patch('/projects/{project}/tasks/{task}', 'ProjectTasksController@update');
-    Route::get('/home', 'HomeController@index')->name('home');
+   
 
 
 /*

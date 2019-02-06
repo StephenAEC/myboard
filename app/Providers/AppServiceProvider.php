@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Providers;
+use App\Observers\ProjectObserver;
+use App\Observers\TaskObserver;
 use App\Channel;
+use App\Project;
+use App\Task;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
           
            \View::composer('*', function ($view) {
             $view->with('channels', Channel::all());
+            Project::observe(ProjectObserver::class);
+            Task::observe(TaskObserver::class);
         });
 
         }

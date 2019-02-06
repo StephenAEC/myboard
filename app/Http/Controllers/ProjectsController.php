@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 use App\Project;
-use App\Policies\ProjectsPolicy; 
 class ProjectsController extends Controller
 {
     /**
