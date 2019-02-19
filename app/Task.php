@@ -3,6 +3,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
+    use RecordsActivity;
     /**
      * Attributes to guard against mass assignment.
      *
@@ -24,12 +25,18 @@ class Task extends Model
         'completed' => 'boolean'
     ];
     /**
+     * Model events that should trigger new activity.
+     * 
+     * @var array
+     */
+    protected static $recordableEvents = ['created', 'deleted'];
+    /**
      * Mark the task as complete.
      */
     public function complete()
     {
         $this->update(['completed' => true]);
-        $this->project->recordActivity('completed_task');
+        $this->recordActivity('completed_task');
     }
     /**
      * Mark the task as incomplete.
@@ -37,7 +44,7 @@ class Task extends Model
     public function incomplete()
     {
         $this->update(['completed' => false]);
-        $this->project->recordActivity('incompleted_task');
+        $this->recordActivity('incompleted_task');
     }
     /**
      * Get the owning project.
